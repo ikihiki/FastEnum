@@ -69,11 +69,17 @@ namespace FastEnumUtility.Tests.Cases
 
         [Fact]
         public void TryParse()
-            => FastEnum.TryParse<TEnum>("ABCDE", out var _).Should().BeFalse();
+        {
+            FastEnum.TryParse<TEnum>("ABCDE", out var _).Should().BeFalse();
+            FastEnum.TryParse<TEnum>("", out var _).Should().BeFalse();
+        }
 
 
         [Fact]
         public void TryParseIgnoreCase()
-            => FastEnum.TryParse<TEnum>("ABCDE", true, out var _).Should().BeFalse();
+        {
+            FastEnum.TryParse<TEnum>("ABCDE", out var _).Should().BeFalse();
+            FastEnum.TryParse<TEnum>("", out var _).Should().BeFalse();
+        }    
     }
 }
